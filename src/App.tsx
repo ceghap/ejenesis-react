@@ -5,8 +5,7 @@ import Home from "./public/Home";
 import Login from "./public/Login";
 import Register from "./public/Register";
 import Error from "./common/Error";
-import PublicLayout from "./common/components/PublicLayout";
-import PrivateLayout from "./common/components/PrivateLayout";
+import Layout from "./common/components/Layout";
 import Dashboard from "./private/Dashboard";
 import Profile from "./private/Profile";
 
@@ -14,13 +13,13 @@ export const App = () => (
   <ChakraProvider theme={theme}>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<PublicLayout />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="*" element={<Error />} /> {/* 404 */}
         </Route>
-        <Route path="/dashboard" element={<PrivateLayout />}>
+        <Route path="/dashboard" element={<Layout privateRoute />}>
           <Route index element={<Dashboard />} />
           <Route path="profile" element={<Profile />} />
           <Route path="*" element={<Error />} /> {/* 404 */}
