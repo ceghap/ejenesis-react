@@ -17,8 +17,8 @@ const NavbarContainer: React.FC<NavbarContainerProps> = ({
       w="100%"
       p={8}
       boxShadow="sm"
-      bg={useColorModeValue("gray.50", "gray.900")}
-      color={useColorModeValue("gray.700", "gray.200")}
+      bg={useColorModeValue("blue.400", "gray.900")}
+      color={useColorModeValue("white", "gray.200")}
       {...props}
     >
       {children}

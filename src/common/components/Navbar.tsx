@@ -15,7 +15,7 @@ const Navbar: React.FC<LayoutProps> = ({ privateRoute, ...props }) => {
 
   return (
     <NavbarContainer {...props}>
-      <Logo w="100px" />
+      <Logo w="100px" colorMode="white" />
       <MenuToggle toggle={toggle} isOpen={isOpen} />
       {privateRoute ? (
         <MenuLinks isOpen={isOpen}>
