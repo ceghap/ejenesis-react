@@ -26,7 +26,9 @@ const Footer = () => {
         justify={{ base: "center", md: "space-between" }}
         align={{ base: "center", md: "center" }}
       >
-        <Logo />
+        <Box w="100px">
+          <Logo w="100%" />
+        </Box>
         <Text>© 2022 Ejenesis. All rights reserved</Text>
         <Stack direction={"row"} spacing={6}>
           <SocialButton label={"Twitter"} href={"#"}>
