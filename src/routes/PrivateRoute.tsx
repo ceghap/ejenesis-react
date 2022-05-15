@@ -1,16 +1,15 @@
 import { Outlet, Navigate } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
 import Navbar from "../common/components/Navbar";
 import Footer from "../common/components/Footer";
 import { Container } from "@chakra-ui/react";
 import Layout from "../common/components/Layout";
 
 const PrivateRoute = () => {
-  const { isAuthenticated } = useAuth();
+  const user = false;
   return (
     <Layout>
-      <Navbar privateRoute={isAuthenticated} />
-      {isAuthenticated ? (
+      <Navbar privateRoute={user} />
+      {user ? (
         <Container>
           <Outlet />
         </Container>
