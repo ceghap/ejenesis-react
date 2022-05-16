@@ -1,38 +1,35 @@
-import * as React from "react"
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
+import "./common/utils/firebase/config";
 
-export const App = () => (
-  <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
-    </Box>
-  </ChakraProvider>
-)
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ChakraProvider, theme } from "@chakra-ui/react";
+
+import Dashboard from "./private/Dashboard";
+import Error from "./common/Error";
+import Home from "./public/Home";
+import Login from "./public/Login";
+import PrivateRoute from "./routes/PrivateRoute";
+import { Profile } from "./private/profile";
+import PublicRoute from "./routes/PublicRoute";
+import Register from "./public/Register";
+
+export const App = () => {
+  return (
+    <ChakraProvider theme={theme}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<PublicRoute />}>
+            <Route index element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="*" element={<Error />} /> {/* 404 */}
+          </Route>
+          <Route path="/dashboard" element={<PrivateRoute />}>
+            <Route index element={<Dashboard />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="*" element={<Error />} /> {/* 404 */}
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ChakraProvider>
+  );
+};
