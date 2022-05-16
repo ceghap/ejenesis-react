@@ -36,7 +36,7 @@ export const Profile = () => {
         .required("Confirm password is required")
         .oneOf(
           [Yup.ref("newPassword")],
-          "Confirm password must match new password"
+          "Confirm password must match password"
         ),
     }),
     onSubmit: (values) => {
