@@ -2,9 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/hooks/*": ["src/hooks/*"],
-      "@/common/*": ["src/common/*"],
-      "@/routes/*": ["src/routes/*"]
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/common/*": ["./src/common/*"],
+      "@/routes/*": ["./src/routes/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

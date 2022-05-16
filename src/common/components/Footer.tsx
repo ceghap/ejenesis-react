@@ -1,21 +1,25 @@
-import React from "react";
 import {
   Box,
   Container,
-  Text,
-  Stack,
   Icon,
+  Stack,
+  Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-import SocialButton from "./SocialButton";
-import Logo from "./Logo";
-import { FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
+import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
-const Footer = () => {
+import Logo from "./Logo";
+import SocialButton from "./SocialButton";
+
+const Footer = ({ user }: { user: boolean }) => {
   return (
     <Box
       bg={useColorModeValue("gray.50", "gray.900")}
       color={useColorModeValue("gray.700", "gray.200")}
+      position="fixed"
+      left={`${user ? "250px" : "0"}`}
+      bottom="0"
+      right="0"
     >
       <Container
         as={Stack}
@@ -44,6 +48,10 @@ const Footer = () => {
       </Container>
     </Box>
   );
+};
+
+Footer.defaultProps = {
+  user: false,
 };
 
 export default Footer;

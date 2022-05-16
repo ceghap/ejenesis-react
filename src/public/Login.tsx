@@ -1,25 +1,22 @@
-// import { Button } from "@chakra-ui/react";
-import React from "react";
-import { useFormik } from "formik";
+import * as Yup from "yup";
+
 import {
+  Button,
+  Checkbox,
   Flex,
   FormControl,
-  FormLabel,
   FormErrorMessage,
-  Text,
-  Input,
-  Button,
+  FormLabel,
   Heading,
-  Stack,
+  Input,
   Link,
-  Checkbox,
+  Stack,
+  Text,
 } from "@chakra-ui/react";
-import * as Yup from "yup";
-import { signIn } from "../utils/firebase/signIn";
-import { useNavigate } from "react-router-dom";
 
-// import { useNavigate } from "react-router-dom";
-// import { useAuth } from "../hooks/useAuth";
+import { signIn } from "../common/utils/firebase/signIn";
+import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
@@ -35,11 +32,11 @@ function Login() {
       password: Yup.string().min(6).required(),
     }),
     onSubmit: async (values) => {
-      console.log(values);
       const user = await signIn(values.email, values.password);
-      console.log(user);
 
       if (!user) return alert("Invalid Credentials");
+
+      localStorage.setItem("token", JSON.stringify(user));
 
       navigate("/dashboard");
     },

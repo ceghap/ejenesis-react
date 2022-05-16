@@ -1,12 +1,13 @@
-import { Outlet, Navigate } from "react-router-dom";
 import { Container, Stack } from "@chakra-ui/react";
-import Layout from "../common/components/Layout";
+import { Navigate, Outlet } from "react-router-dom";
 
-import Navbar from "../common/components/Navbar";
 import Footer from "../common/components/Footer";
+import Layout from "../common/components/Layout";
+import Navbar from "../common/components/Navbar";
+import { useUser } from "../hooks/auth/useUser";
 
 const PublicRoute = () => {
-  const user = false;
+  const user = useUser();
   return (
     <Layout>
       <>

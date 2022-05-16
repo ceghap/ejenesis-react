@@ -7,6 +7,7 @@ export const signOut = async () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const navigate = useNavigate();
     await fbSignOut(auth);
+    localStorage.removeItem("token");
     navigate("/login");
   } catch (error) {
     console.log(error);

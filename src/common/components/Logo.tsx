@@ -4,11 +4,13 @@ const Logo = ({ ...props }) => {
   return (
     <Image
       {...props}
-      src={` ${
-        props.colorMode === "white" ? "/ejenesis-white.svg" : "/ejenesis.svg"
-      }`}
+      src={` ${props.white ? "/ejenesis-white.svg" : "/ejenesis.svg"}`}
     />
   );
+};
+
+Logo.defaultProps = {
+  white: false,
 };
 
 export default Logo;

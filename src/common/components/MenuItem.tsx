@@ -1,12 +1,15 @@
+import { Link, Text } from "@chakra-ui/react";
+
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { Link, Text } from "@chakra-ui/react";
 
 interface MenuItemProps {
   to: string;
   children: React.ReactNode;
   isLast?: boolean;
+  [x: string]: any;
 }
+
 const MenuItem: React.FC<MenuItemProps> = ({
   children,
   isLast,
