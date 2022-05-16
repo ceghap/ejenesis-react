@@ -11,14 +11,8 @@ import PrivateRoute from "./routes/PrivateRoute";
 import { Profile } from "./private/profile";
 import PublicRoute from "./routes/PublicRoute";
 import Register from "./public/Register";
-import { setUser } from "./common/state/user";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { useUser } from "./hooks/auth/useUser";
 
 export const App = () => {
-  const dispatch = useDispatch();
-
   return (
     <ChakraProvider theme={theme}>
       <BrowserRouter>
