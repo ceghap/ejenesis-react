@@ -16,7 +16,6 @@ import {
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
-import { User } from "firebase/auth";
 import { setUser } from "../common/state/user";
 import { signUp } from "../common/utils/firebase/signUp";
 import { useDispatch } from "react-redux";
