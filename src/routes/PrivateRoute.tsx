@@ -26,13 +26,18 @@ import Logo from "../common/components/Logo";
 import MenuItem from "../common/components/MenuItem";
 // import Navbar from "../common/components/Navbar";
 import { auth } from "../common/utils/firebase/config";
+import { setUser } from "../common/state/user";
 import { signOut } from "firebase/auth";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../hooks/auth/useUser";
 
 const PrivateRoute = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = useUser();
+
+  dispatch(setUser(user));
 
   const handleSignOut = async () => {
     try {
