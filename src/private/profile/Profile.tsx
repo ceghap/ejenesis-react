@@ -11,21 +11,21 @@ import {
   Stack,
 } from "@chakra-ui/react";
 
-// import { useSelector } from "react-redux";
+import { RootState } from "../../common/store";
 import { useFormik } from "formik";
-
-// import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 export const Profile = () => {
-  // const user = useSelector((state) => state.user);
+  const { user }: any = useSelector((state: RootState) => state.user);
 
   const formik = useFormik({
     initialValues: {
-      email: "",
-      currentPassword: "",
+      email: user?.email,
+      currentPassword: user?.password,
       newPassword: "",
       confirmPassword: "",
     },
+    enableReinitialize: true,
     validationSchema: Yup.object({
       email: Yup.string().email().required("Email is required"),
       currentPassword: Yup.string()
@@ -115,10 +115,10 @@ export const Profile = () => {
             </FormControl>
             <Button
               type="submit"
-              bg={"blue.400"}
+              bg={"gray.900"}
               color={"white"}
               _hover={{
-                bg: "blue.500",
+                bg: "gray.700",
               }}
             >
               Save

@@ -14,15 +14,12 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-import { setUser } from "../common/state/user";
 import { signIn } from "../common/utils/firebase/signIn";
-import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -40,7 +37,6 @@ function Login() {
       if (!user) return alert("Invalid Credentials");
 
       localStorage.setItem("token", JSON.stringify(user));
-      dispatch(setUser(user));
 
       navigate("/dashboard");
     },
@@ -105,10 +101,10 @@ function Login() {
             </Stack>
             <Button
               type="submit"
-              bg={"blue.400"}
+              bg={"gray.900"}
               color={"white"}
               _hover={{
-                bg: "blue.500",
+                bg: "gray.700",
               }}
             >
               Sign in

@@ -1,30 +1,33 @@
-import {
-  Box,
-  Container,
-  Icon,
-  Stack,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Container, Icon, Stack, Text } from "@chakra-ui/react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import PropTypes, { InferProps } from "prop-types";
 
 import Logo from "./Logo";
 import SocialButton from "./SocialButton";
 
-const Footer = ({ user }: { user: boolean }) => {
+const propTypes = {
+  user: PropTypes.bool,
+  rest: PropTypes.object,
+};
+
+type FooterProps = InferProps<typeof propTypes>;
+
+const Footer = ({ user, ...rest }: FooterProps) => {
   return (
     <Box
-      bg={useColorModeValue("gray.50", "gray.900")}
-      color={useColorModeValue("gray.700", "gray.200")}
+      bg="white"
+      borderTop="1px"
+      borderColor="gray.100"
       position="fixed"
       left={`${user ? "250px" : "0"}`}
       bottom="0"
       right="0"
+      {...rest}
     >
       <Container
         as={Stack}
         maxW={"6xl"}
-        py={4}
+        py={2}
         direction={{ base: "column", md: "row" }}
         spacing={4}
         justify={{ base: "center", md: "space-between" }}
@@ -49,6 +52,8 @@ const Footer = ({ user }: { user: boolean }) => {
     </Box>
   );
 };
+
+Footer.protoTypes = propTypes;
 
 Footer.defaultProps = {
   user: false,

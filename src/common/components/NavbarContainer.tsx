@@ -1,5 +1,6 @@
-import React from "react";
 import { Flex, useColorModeValue } from "@chakra-ui/react";
+
+import React from "react";
 
 interface NavbarContainerProps {
   children: React.ReactNode;
@@ -15,10 +16,8 @@ const NavbarContainer: React.FC<NavbarContainerProps> = ({
       justify="space-between"
       wrap="wrap"
       w="100%"
-      p={8}
+      p={4}
       boxShadow="sm"
-      bg={useColorModeValue("blue.400", "gray.900")}
-      color={useColorModeValue("white", "gray.200")}
       {...props}
     >
       {children}
