@@ -5,6 +5,7 @@ import {
   MenuItem as CUIMenuItem,
   Container,
   Flex,
+  Heading,
   Icon,
   Input,
   InputGroup,
@@ -50,32 +51,44 @@ const PrivateRoute = () => {
   };
   return (
     <Layout>
-      {/* <Navbar privateRoute={user} /> */}
       {user ? (
         <Container maxW="100vw" p={0}>
           <Flex>
             <Stack
+              bgColor="white"
               w="250px"
               position="fixed"
               top="0"
               bottom="0"
-              shadow="sm"
+              shadow="md"
               zIndex="10"
             >
-              <Box px={8} py={4} shadow="sm">
-                <Logo />
+              <Box p={4} borderBottom="1px" borderColor="gray.100">
+                <Logo w="100px" />
               </Box>
-              <Box bgColor="blue.500" color="white" p={4}>
-                <MenuItem to="/dashboard">Dashboard</MenuItem>
-                <MenuItem to="profile">Profile</MenuItem>
-                <Link>
-                  <Text display="block" onClick={handleSignOut}>
-                    Sign out
-                  </Text>
-                </Link>
-              </Box>
+              <Stack p={4}>
+                <Heading as="h4" size="sm">
+                  Menu
+                </Heading>
+                <Box pl={2}>
+                  <MenuItem to="/dashboard">Dashboard</MenuItem>
+                  <MenuItem to="profile">Profile</MenuItem>
+                  <Link>
+                    <Text display="block" onClick={handleSignOut}>
+                      Sign out
+                    </Text>
+                  </Link>
+                </Box>
+              </Stack>
             </Stack>
-            <Stack bgColor="white" w="100%" marginLeft="250px" marginTop="57px">
+            <Stack
+              bgColor="white"
+              w="100%"
+              marginLeft="250px"
+              marginTop="57px"
+              overflowX="hidden"
+              overflowY="auto"
+            >
               <Flex
                 bgColor="white"
                 shadow="sm"
@@ -87,32 +100,46 @@ const PrivateRoute = () => {
                 justify="space-between"
                 align="center"
               >
-                <Stack marginRight="auto">
+                <Stack marginRight="auto" flexGrow={10}>
                   <InputGroup>
                     <InputLeftElement
                       pointerEvents="none"
                       children={<Icon as={FaSearch} />}
                     />
-                    <Input placeholder="Search" />
+                    <Input placeholder="Search" border="0" />
                   </InputGroup>
                 </Stack>
-                <Flex direction="row" align="center">
-                  <Icon as={FaBell} w={6} h={6} />
-                  <Menu>
-                    <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-                      <Avatar
-                        size="sm"
-                        name="Ashraf Latif"
-                        src="https://i.pravatar.cc/300"
-                      />{" "}
-                      <Text>Ashraf Latif</Text>
-                    </MenuButton>
-                    <MenuList>
-                      <CUIMenuItem>Profile</CUIMenuItem>
-                      <CUIMenuItem>Account</CUIMenuItem>
-                      <CUIMenuItem>Sign out</CUIMenuItem>
-                    </MenuList>
-                  </Menu>
+                <Flex
+                  direction="row"
+                  align="center"
+                  justifyContent="flex-end"
+                  flexGrow={2}
+                >
+                  <Box>
+                    <Menu>
+                      <MenuButton
+                        bg="transparent"
+                        as={Button}
+                        rightIcon={<ChevronDownIcon />}
+                        display="flex"
+                      >
+                        <Flex alignItems="center">
+                          <Avatar
+                            size="sm"
+                            name="Ashraf Latif"
+                            src="https://i.pravatar.cc/300"
+                            marginRight={2}
+                          />{" "}
+                          <Text>Ashraf Latif</Text>
+                        </Flex>
+                      </MenuButton>
+                      <MenuList>
+                        <CUIMenuItem>Profile</CUIMenuItem>
+                        <CUIMenuItem>Account</CUIMenuItem>
+                        <CUIMenuItem>Sign out</CUIMenuItem>
+                      </MenuList>
+                    </Menu>
+                  </Box>
                 </Flex>
               </Flex>
               <Box w="lg" p={8}>
